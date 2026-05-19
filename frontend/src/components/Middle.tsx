@@ -205,7 +205,7 @@ const Middle = ({ feedCards, setFeedCards }: Middle) => {
     }
   };
 
-  // console.log(feedCards.[0].likes_count);
+  console.log(feedCards);
 
   return (
     <div className="text-white px-[5%]  mt-8 md:mt-10 flex flex-col md:flex-row justify-between   ">
@@ -369,22 +369,31 @@ const Middle = ({ feedCards, setFeedCards }: Middle) => {
                   </span>
                 </div>
 
-                <div className="flex items-center  mt-2">
+                <div className="flex items-center  mt-2 pr-3">
                   <button
                     className="border rounded-2xl px-3 py-0.5  text-sm md:text-base cursor-pointer hover:bg-purple-500 hover:border-white/0 transition-all duration-200"
                     onClick={() => navigate(`/${c.user_unique_id}/${c.id}`)}
                   >
                     Review
                   </button>
-                  {c.comments_count === 0 && (
-                    <IoIosHeart className="ml-2 text-red-500" />
+                  {c.likes_count !== 0 && (
+                    <div className="flex  items-center ml-2">
+                      {c.likes_count}
+                      <IoIosHeart className="ml-0.5 text-red-500" />
+                    </div>
+                  )}
+                  {c.comments_count !== 0 && (
+                    <div className="flex items-center ml-2 ">
+                      {c.comments_count}
+                      <FaRegCommentDots className="ml-0.5" />
+                    </div>
                   )}
                 </div>
               </div>
 
               <div
                 className="ml-auto flex items-center border border-white/20 rounded-2xl p-1 pl-2 cursor-pointer
-              duration-200 transition-all hover:border-purple-500 max-w-[40%] sm:max-w-none"
+              duration-200 transition-all hover:border-purple-500 max-w-[40%] sm:max-w-none "
                 onClick={() => {
                   setMovieImage(c.banner);
                   setMovieDescription(c.description);
