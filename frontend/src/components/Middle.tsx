@@ -205,8 +205,6 @@ const Middle = ({ feedCards, setFeedCards }: Middle) => {
     }
   };
 
-  console.log(feedCards);
-
   return (
     <div className="text-white px-[5%]  mt-8 md:mt-10 flex flex-col md:flex-row justify-between   ">
       <div className="w-full md:w-auto ">
