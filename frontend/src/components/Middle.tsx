@@ -29,6 +29,23 @@ const Middle = ({ feedCards, setFeedCards }: Middle) => {
   const descriptionRef = useRef<HTMLDivElement>(null);
   const [maxHeight, setMaxHeight] = useState(0);
 
+  const {
+    movies,
+    movieName,
+    movieRelease,
+    movieDescription,
+    moviePoster,
+    movieImage,
+    movieId,
+    setMovieImage,
+    setMovieDescription,
+    setMovieName,
+    setMoviePoster,
+    setMovieRelease,
+    setMovieId,
+    setModal,
+  } = useMovie();
+
   useEffect(() => {
     const updateHeight = () => {
       if (!descriptionRef.current) return;
@@ -49,24 +66,7 @@ const Middle = ({ feedCards, setFeedCards }: Middle) => {
     return () => {
       window.removeEventListener("resize", updateHeight);
     };
-  }, []);
-
-  const {
-    movies,
-    movieName,
-    movieRelease,
-    movieDescription,
-    moviePoster,
-    movieImage,
-    movieId,
-    setMovieImage,
-    setMovieDescription,
-    setMovieName,
-    setMoviePoster,
-    setMovieRelease,
-    setMovieId,
-    setModal,
-  } = useMovie();
+  }, [movieDescription]);
 
   const { watchlist, loadCards, setLoading } = useUser();
 

@@ -315,6 +315,16 @@ export const homePageCards = async (req: Request, res: Response) => {
         created_at: cards.created_at,
         tmdb_id: cards.tmdb_id,
 
+        comments: sql<number>`
+        (SELECT COUNT(*)::int 
+        FROM comments
+        WHERE  card_id = ${cards.id} )`,
+
+        likes: sql<number>`
+        (SELECT COUNT (*)::int
+        FROM likes
+        WHERE card_id = ${cards.id})`,
+
         user_name: users.name,
         user_unique_id: users.unique_id,
         user_picture: users.picture,
