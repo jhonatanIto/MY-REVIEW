@@ -156,6 +156,7 @@ const Friends = () => {
     return () => window.removeEventListener("mousedown", closeSearch);
   }, []);
 
+  console.log(users);
   return (
     <div className="mt-6 md:mt-10 px-4 md:px-0">
       <div className="flex flex-col md:flex-row md:justify-between md:pl-[8%] md:pr-[8%]">
@@ -188,6 +189,13 @@ const Friends = () => {
             />{" "}
             <span className="ml-1">Name</span>
           </label>
+        </div>
+
+        <div
+          style={{ display: following.length === 0 ? "flex" : "none" }}
+          className="text-white text-2xl  absolute top-40 w-full p-5 text-center md:w-fit md:top-80 left-1/2 -translate-x-1/2 "
+        >
+          Friends that you are following will appear here.
         </div>
 
         <div

@@ -199,6 +199,12 @@ const VisitorPov = () => {
         </div>
       </div>
 
+      {sortedCards.length === 0 && (
+        <div className="text-white text-2xl absolute left-1/2 -translate-x-1/2 md:top-100 top-130">
+          No Reviews yet.
+        </div>
+      )}
+
       <div
         className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6
       gap-5 mt-6 px-4 md:w-[80%] md:ml-auto md:mr-auto"

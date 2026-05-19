@@ -188,7 +188,8 @@ export const getFollowing = async (req: Request, res: Response) => {
       })
       .from(follows)
       .innerJoin(users, eq(users.id, follows.following_id))
-      .where(eq(follows.follower_id, userId));
+      .where(eq(follows.follower_id, userId))
+      .orderBy(desc(follows.created_at));
 
     res.status(200).json({ following });
   } catch (error) {

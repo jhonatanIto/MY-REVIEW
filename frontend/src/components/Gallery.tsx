@@ -32,6 +32,8 @@ const Gallery = () => {
     setMovieId,
   } = useMovie();
 
+  console.log(showWatch);
+
   useEffect(() => {
     const closeFilter = (e: MouseEvent) => {
       if (filterRef.current && !filterRef.current.contains(e.target as Node)) {
@@ -117,6 +119,17 @@ const Gallery = () => {
           <li onClick={() => selectFilter("Release date")}>Release date</li>
         </ul>
       </div>
+
+      {sortedCards.length === 0 && !showWatch && (
+        <div className="text-white text-2xl left-1/2 top-70 absolute -translate-x-1/2 w-full text-center md:w-fit">
+          Your Reviews will appear here.
+        </div>
+      )}
+      {sortedCards.length === 0 && showWatch && (
+        <div className="text-white text-2xl left-1/2 top-70 absolute -translate-x-1/2 w-full text-center md:w-fit">
+          Your Watch list will appear here.
+        </div>
+      )}
 
       <div className="flex flex-wrap mx-auto w-full justify-center px-2 md:px-0">
         {sortedCards?.map((c) => (
