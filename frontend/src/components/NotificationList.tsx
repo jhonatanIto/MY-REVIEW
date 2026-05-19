@@ -27,13 +27,13 @@ const NotificationList = ({
   return (
     <div
       className={`${showNoti ? "block" : "hidden"} absolute right-0 z-30 top-12 bg-white text-black border md:w-100 w-full 
-       rounded-2xl text-[15px] p-2 max-h-120  overflow-scroll no-scrollbarChat  `}
+       rounded-2xl text-[15px] p-2 max-h-120  overflow-scroll no-scrollbarChat `}
     >
       {notiData.length === 0 && (
         <div className="p-2">No notifications yet.</div>
       )}
       {notiData.map((n) => (
-        <div className="mt-2 flex items-center">
+        <div key={n.id} className="mt-2 flex items-center">
           <img
             className="w-12 h-12 md:w-12 md:h-12 rounded-full bg-zinc-600 object-cover cursor-pointer group-hover:scale-110 "
             src={n.from_user.picture || userpic}

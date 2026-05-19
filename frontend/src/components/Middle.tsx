@@ -11,6 +11,8 @@ import { useNavigate } from "react-router-dom";
 import type { Cards } from "../context/UserContext";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { IoIosHeart } from "react-icons/io";
+import { FaRegCommentDots } from "react-icons/fa";
 
 interface Middle {
   feedCards: Cards[];
@@ -203,6 +205,8 @@ const Middle = ({ feedCards, setFeedCards }: Middle) => {
     }
   };
 
+  // console.log(feedCards.[0].likes_count);
+
   return (
     <div className="text-white px-[5%]  mt-8 md:mt-10 flex flex-col md:flex-row justify-between   ">
       <div className="w-full md:w-auto ">
@@ -365,12 +369,17 @@ const Middle = ({ feedCards, setFeedCards }: Middle) => {
                   </span>
                 </div>
 
-                <button
-                  className="border rounded-2xl px-3 py-0.5 mt-2 text-sm md:text-base cursor-pointer hover:bg-purple-500 hover:border-white/0 transition-all duration-200"
-                  onClick={() => navigate(`/${c.user_unique_id}/${c.id}`)}
-                >
-                  Review
-                </button>
+                <div className="flex items-center  mt-2">
+                  <button
+                    className="border rounded-2xl px-3 py-0.5  text-sm md:text-base cursor-pointer hover:bg-purple-500 hover:border-white/0 transition-all duration-200"
+                    onClick={() => navigate(`/${c.user_unique_id}/${c.id}`)}
+                  >
+                    Review
+                  </button>
+                  {c.comments_count === 0 && (
+                    <IoIosHeart className="ml-2 text-red-500" />
+                  )}
+                </div>
               </div>
 
               <div
