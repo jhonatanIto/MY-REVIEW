@@ -183,7 +183,7 @@ const ChatPage = () => {
     const fetchFollowing = async () => {
       if (!token) return;
       const data = await getFollowing(token);
-      const last10 = data.following.slice(-10).reverse();
+      const last10 = data.following.slice(-50);
       setFollowing(last10);
     };
     fetchFollowing();
@@ -340,17 +340,21 @@ const ChatPage = () => {
           className={`${!showChat ? "hidden" : ""} ${!unique ? "items-center " : "justify-between"}   md:flex flex-col  w-full
             border-l border-zinc-300`}
         >
-          <div className={`${unique ? "hidden" : ""}`}>
+          <div
+            className={`${unique ? "hidden" : ""} flex flex-col h-full min-h-0`}
+          >
             {following?.length === 0 && (
               <div className="mt-20 text-2xl">
                 Chat will appear here after you send or receive a message
               </div>
             )}
             {following.length > 0 && (
-              <div>
-                <div className="text-2xl mt-20">Send a message to a friend</div>
+              <div className="h-full flex flex-col min-h-0">
+                <div className="text-2xl mt-20 md:mt-10">
+                  Send a message to a friend
+                </div>
                 <div className="flex justify-start mt-3">Suggested:</div>
-                <div className="overflow-scroll">
+                <div className="overflow-y-auto no-scrollbarChat  h-full ">
                   {following?.map((f) => {
                     return (
                       <div
