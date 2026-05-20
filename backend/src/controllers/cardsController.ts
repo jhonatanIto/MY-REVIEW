@@ -275,6 +275,7 @@ export const getFollowingCards = async (req: Request, res: Response) => {
         created_at: cards.created_at,
         user_name: users.name,
         user_picture: users.picture,
+        user_unique_id: users.unique_id,
       })
       .from(follows)
       .innerJoin(cards, eq(cards.user_id, follows.following_id))

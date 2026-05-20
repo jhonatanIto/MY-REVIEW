@@ -156,7 +156,6 @@ const Friends = () => {
     return () => window.removeEventListener("mousedown", closeSearch);
   }, []);
 
-  console.log(users);
   return (
     <div className="mt-6 md:mt-10 px-4 md:px-0">
       <div className="flex flex-col md:flex-row md:justify-between md:pl-[8%] md:pr-[8%]">
@@ -321,7 +320,7 @@ const Friends = () => {
                   key={c.id}
                   className="relative w-[50%] md:w-[14%] shrink-0"
                 >
-                  <Link to={`/friends/${c.id}`}>
+                  <Link to={`/profile/${c.user_unique_id}`}>
                     <img
                       draggable={false}
                       src={c.user_picture || userpic}
