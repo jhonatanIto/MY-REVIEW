@@ -96,7 +96,7 @@ export const login = async (req: Request, res: Response) => {
     if (!JWT_SECRET) throw new Error("JWT_SECRET not defined");
 
     const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
-      expiresIn: "7d",
+      expiresIn: "3000d",
     });
 
     res.status(200).json({
