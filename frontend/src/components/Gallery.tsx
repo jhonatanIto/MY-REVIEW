@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { useMovie } from "../context/useMovie";
 
 export type SortOption =
-  | "Newest"
+  | "Recent"
   | "Oldest"
   | "Highest rate"
   | "Lowest rate"
@@ -16,7 +16,7 @@ const Gallery = () => {
   const { cards, watchlist, showWatch, search } = useUser();
 
   const [sortBy, setSortBy] = useState<SortOption>(
-    () => (localStorage.getItem("MyReview_sortBy") as SortOption) || "Newest",
+    () => (localStorage.getItem("MyReview_sortBy") as SortOption) || "Recent",
   );
   const [displayFilter, setDisplayFilter] = useState(false);
   const filterRef = useRef<HTMLDivElement>(null);
@@ -31,8 +31,6 @@ const Gallery = () => {
     setMoviePoster,
     setMovieId,
   } = useMovie();
-
-  console.log(showWatch);
 
   useEffect(() => {
     const closeFilter = (e: MouseEvent) => {
@@ -66,7 +64,7 @@ const Gallery = () => {
 
   const sortedCards = [...(filteredCards || [])].sort((a, b) => {
     switch (sortBy) {
-      case "Newest":
+      case "Recent":
         return (
           new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
         );
@@ -108,7 +106,7 @@ const Gallery = () => {
           className={`${displayFilter ? "flex" : "hidden"} flex-col absolute z-50 bg-zinc-100 rounded-[5px] mt-1
         w-32 text-[16px] md:text-[18px] [&>li]:p-2 [&>li]:hover:bg-zinc-200 [&>li]:cursor-pointer [&>li]:pl-4 [&>li]:font-semibold [&>li]:hover:text-purple-500`}
         >
-          <li onClick={() => selectFilter("Newest")}>Newest</li>
+          <li onClick={() => selectFilter("Recent")}>Recent</li>
           <li onClick={() => selectFilter("Oldest")}>Oldest</li>
           {!showWatch && (
             <>
