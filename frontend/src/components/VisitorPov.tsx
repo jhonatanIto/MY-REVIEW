@@ -87,7 +87,7 @@ const VisitorPov = () => {
 
   const sortedCards = [...(cards || [])].sort((a, b) => {
     switch (sortBy) {
-      case "Newest":
+      case "Recent":
         return (
           new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
         );
@@ -189,7 +189,7 @@ const VisitorPov = () => {
             [&>li]:cursor-pointer [&>li]:font-semibold
             [&>li]:hover:text-purple-500`}
             >
-              <li onClick={() => selectFilter("Newest")}>Newest</li>
+              <li onClick={() => selectFilter("Recent")}>Recent</li>
               <li onClick={() => selectFilter("Oldest")}>Oldest</li>
               <li onClick={() => selectFilter("Highest rate")}>Highest rate</li>
               <li onClick={() => selectFilter("Lowest rate")}>Lowest rate</li>
